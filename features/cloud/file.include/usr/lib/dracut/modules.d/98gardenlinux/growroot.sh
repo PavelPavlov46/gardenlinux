@@ -1,5 +1,7 @@
 #!/bin/sh
 
+exit 0
+
 type getarg >/dev/null 2>&1 || . /lib/dracut-lib.sh
 type info >/dev/null 2>&1 || . /lib/dracut-lib.sh
 type warn >/dev/null 2>&1 || . /lib/dracut-lib.sh
