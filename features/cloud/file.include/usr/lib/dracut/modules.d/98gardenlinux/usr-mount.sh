@@ -16,6 +16,8 @@ echo "[Unit]"
 echo "Before=initrd-root-fs.target"
 echo "Requires=systemd-fsck@${DEVNAME}.service"
 echo "After=sysroot.mount"
+echo "After=systemd-fsck@${DEVNAME}.service"
+echo "After=blockdev@${DEVNAME}.target"
 echo "[Mount]"
 echo "Where=/sysroot/usr"
 echo "What=$DEVICE"
@@ -24,4 +26,4 @@ echo "Type=$FSTYPE"
 } > /etc/systemd/system/sysroot-usr.mount
 
 mkdir -p /etc/systemd/system/initrd-fs.target.wants
-ln -s /etc/systemd/system/sysroot-usr.mount /etc/systemd/system/initrd-fs.target.wants/sysroot-usr.mount 
+ln -s /etc/systemd/system/sysroot-usr.mount /etc/systemd/system/initrd-fs.target.wants/sysroot-usr.mount
